@@ -41,12 +41,12 @@ router.get("/", async(req,res)=>{
                 }
             })
             if(allCountries){
-                return res.json(allCountries)
+                return res.json(allCountries)  //muestro los paises que coincidieron
             }else{
                 return res.send("Pais no encontrado")
             }
         }else{
-            let restcountries = await Country.findAll()
+            let restcountries = await Country.findAll() // si no pasa nada por query muestro los paises
             if(restcountries){
                 return res.json(restcountries)
             } else{
@@ -60,7 +60,7 @@ router.get("/", async(req,res)=>{
        //  res.json(infoCountries)
 })
 
-const getCountries = async()=>{
+const getCountries = async()=>{     //Busco mis paises en mi base de datos eh incluyo el model de activities
     return await Country.findAll({
         include:{
             model: Activity,
@@ -74,11 +74,11 @@ const getCountries = async()=>{
 
 router.get("/:id", async(req,res)=>{
     const{id} = req.params
-    const aCountries = await getCountries();
+    const aCountries = await getCountries();        //trabajo con la info de mi base de datos
     try {
         if(id){
-        let countriesById = aCountries.filter(el => el.id.toLowerCase() === id.toLowerCase())
-        countriesById.length? res.status(200).json(countriesById):
+        let countriesById = aCountries.filter(el => el.id.toLowerCase() === id.toLowerCase()) //filtro por id
+        countriesById.length? res.status(200).json(countriesById):      //si coinciden, muestro ese pais
         res.status(400).send("No existe ese Id") 
         }else{
             return res.send("No recibi ningun Id")

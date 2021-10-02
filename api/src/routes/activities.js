@@ -14,7 +14,7 @@ router.post("/", async(req,res)=>{
                 difficulty: difficulty,
                 duration: duration,
                 season: season,
-                countryId: countryId
+                // countryId: countryId(para probar si me funcionaba)
             })
         let countryA = await Country.findByPk(countryId);
         console.log(countryA)
