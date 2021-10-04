@@ -1,15 +1,21 @@
 import {React} from "react";
 import { useState, useEffect } from "react";
 import {useDispatch, useSelector} from "react-redux";
-import { getAllCountries } from "../actions/index.js";
+import { getAllCountries, filterByContinent, getCountriesByName } from "../actions/index.js";
 import { Link } from "react-router-dom";
 import Country from "./Country"
 import Paginado from "./Paginado.jsx";
+import Order from "./Order/OrderByAlf.jsx";
+import OrderByArea from "./Order/OrderByArea.jsx";
+
 
 export default function Home(){
     
 const dispatch = useDispatch();
-const countriesLoaded = useSelector((state) => state.countriesUpload);
+const countriesLoaded = useSelector((state) => state.showAllCountries);
+const [search, setSearch] = useState("");
+const [order, setOrder] = useState("asc")
+const [area, setArea] =useState("max")
 const [currentPage, setCurrentPage] = useState(1); //indica el numero de pagina
 const [countriesPerPage, setCountriesPerPage] = useState(9); //indica el numero de paises que muestro por pagina
 const indexOfLastCountry = currentPage * countriesPerPage //sirve para 
@@ -25,32 +31,57 @@ useEffect(()=>{
     dispatch(getAllCountries());
 },[dispatch])
 
-
- function handdleOnClickCountries(e){
-     e.preventDefault(e)
-     dispatch(getAllCountries());
-
+function handleOnfilterByContinent(e){
+    dispatch(filterByContinent(e.target.value))
  }
+
+ function handleSumbitSearchName(e){
+    e.preventDefault(e);
+    dispatch(getCountriesByName(search))
+    setSearch("")
+ }
+
+ function handleOnInputSearchName(e){
+     setSearch(e.target.value)
+ }
+
+function handdleOnClickCountries(e){
+    dispatch(getAllCountries());
+    
+    
+}
+
+
 
  return (
      <div>
+        {/* formulario para buscar por pais */}
         <div>
-       <select>
-           <option value="asc">Ascendente</option>
-           <option value="desc">Descendente</option>
-       </select>
+            <form onSubmit={(e) => { handleSumbitSearchName(e) }}>
+                <h2>Search your country...</h2>
+                <input  type="text" value={search} name="name" placeholder="Country..." onChange={(e) => { handleOnInputSearchName(e) }}/>
+                <button type="submit" onClick={e=>handleSumbitSearchName(e)}>Search</button>
+            </form>
         </div>
+
         <div>
-            <button type= "submit" onClick ={(e)=>{handdleOnClickCountries(e)}}>Cargar todos los paises</button>
+            <button type= "submit" onClick ={(e)=>{handdleOnClickCountries(e)}}>Show all countries</button>
         </div>
+         <div>
+             <Order order={order} setOrder={setOrder} setCurrentPage={setCurrentPage}/>
+         </div>
+         <div>
+             <OrderByArea area={area} setArea={setArea}/>
+         </div>
         <div>
-            <select>
-                <option value="all">Todos</option>
-                <option value="africa">Africa</option>
-                <option value="americas">Americas</option>
-                <option value="asia">Asia</option>
-                <option value="europe">Europa</option>
-                <option value="oceania">Oceania</option>
+            <select onChange={e=>handleOnfilterByContinent(e)}>
+                <option value="All">All</option>
+                <option value="Africa">Africa</option>
+                <option value ="Antarctic">Antartica</option>
+                <option value="Americas">Americas</option>
+                <option value="Asia">Asia</option>
+                <option value="Europe">Europa</option>
+                <option value="Oceania">Oceania</option>
             </select>
         </div>
         <Paginado
