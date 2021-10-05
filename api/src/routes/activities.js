@@ -24,6 +24,17 @@ router.post("/", async(req,res)=>{
     } catch (error) {
         console.log(error)
     }
-})  
+})
+
+router.get("/", async (req, res) => {
+    try {
+        const activities = await Activity.findAll({
+            include: Country
+        });
+        return res.json(activities)
+    } catch (err) {
+        console.log(error);
+    }
+})
 
 module.exports = router

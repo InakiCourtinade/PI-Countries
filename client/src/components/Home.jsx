@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import {useDispatch, useSelector} from "react-redux";
 import { getAllCountries, filterByContinent, getCountriesByName } from "../actions/index.js";
 import { Link } from "react-router-dom";
-import Country from "./Country"
+import Country from "./Country/Country"
 import Paginado from "./Paginado.jsx";
 import Order from "./Order/OrderByAlf.jsx";
 import OrderByArea from "./Order/OrderByArea.jsx";
@@ -93,7 +93,7 @@ function handdleOnClickCountries(e){
                 currentCountries?.map(el =>{
             return (
                 <div>
-                    <Link to ={`/home/${el.id}`}>
+                    <Link to ={`/countries/${el.id}`}>
                     <Country name={el.name} image={el.image} continent={el.continent} key={el.id}/>
                     </Link>
                 </div>
