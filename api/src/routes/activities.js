@@ -14,11 +14,18 @@ router.post("/", async(req,res)=>{
                 difficulty: difficulty,
                 duration: duration,
                 season: season,
-                // countryId: countryId(para probar si me funcionaba)
+                
             })
-        let countryA = await Country.findByPk(countryId);
-        console.log(countryA)
-        await countryA.addActivities(newActivities) 
+            for(let i = 0; i<countryId.length;i++){
+
+                const countryA = await Country.findAll({
+                    where: {
+                        id: countryId[i]
+                    }
+                })
+                await newActivities.addCountries(countryA);
+            }
+       
         res.send("Se creo la actividad");
         
     } catch (error) {

@@ -1,7 +1,7 @@
 import {React} from "react";
 import { useState, useEffect } from "react";
 import {useDispatch, useSelector} from "react-redux";
-import { getAllCountries, filterByContinent, getCountriesByName } from "../actions/index.js";
+import { getAllCountries, filterByContinent, getCountriesByName, getActivities, filterActivity } from "../actions/index.js";
 import { Link } from "react-router-dom";
 import Country from "./Country/Country"
 import Paginado from "./Paginado.jsx";
@@ -25,11 +25,16 @@ const currentCountries = countriesLoaded.slice(indexOfFirstCountry, indexOfLastC
 const paginado = (pageNumber)=>{
     setCurrentPage(pageNumber)
 }
-
+const activities = useSelector((state)=> state.allActivities)
 
 useEffect(()=>{
     dispatch(getAllCountries());
-},[dispatch])
+    dispatch(getActivities())
+},[])
+
+function handleFilterActivity(e){
+    dispatch(filterActivity(e.target.value))
+}
 
 function handleOnfilterByContinent(e){
     dispatch(filterByContinent(e.target.value))
@@ -45,7 +50,8 @@ function handleOnfilterByContinent(e){
      setSearch(e.target.value)
  }
 
-function handdleOnClickCountries(e){
+function handdleOnClickCountries(e){ //Me traigo todos los paises
+    e.preventDefault()
     dispatch(getAllCountries());
     
     
@@ -55,6 +61,11 @@ function handdleOnClickCountries(e){
 
  return (
      <div>
+         <div>
+             <Link to="/postActivity">
+             <button>Create activity</button>
+             </Link>
+         </div>
         {/* formulario para buscar por pais */}
         <div>
             <form onSubmit={(e) => { handleSumbitSearchName(e) }}>
@@ -62,6 +73,20 @@ function handdleOnClickCountries(e){
                 <input  type="text" value={search} name="name" placeholder="Country..." onChange={(e) => { handleOnInputSearchName(e) }}/>
                 <button type="submit" onClick={e=>handleSumbitSearchName(e)}>Search</button>
             </form>
+        </div>
+
+        <div>
+            <label>Filter by Activity</label>
+            <select onChange={(e)=>{handleFilterActivity(e)}}>
+                <option>Activity</option>
+                {activities?.length &&
+                    activities.map(el=>{
+                        return(
+                            <option key={el.id} value={el.name}>{el.name}</option>
+                        )
+                    })
+                }
+            </select>
         </div>
 
         <div>

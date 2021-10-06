@@ -25,6 +25,7 @@ export default function Detail(){
                 <h3>{getDetail[0].name}</h3>
                 <img src={getDetail[0].image} alt="Image not found" />
                 <p>ID: {getDetail[0].id}</p>
+                <h2>Continent: {getDetail[0].continent}</h2>
                 <h2>Capital: {getDetail[0].capital}</h2>
                 <h4>Area: {getDetail[0].area} km</h4>
                 <h4>Region: {getDetail[0].subregion}</h4>

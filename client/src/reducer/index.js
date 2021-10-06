@@ -1,4 +1,4 @@
-import { GET_COUNTRIES,FILTER_BY_CONTINENT,GET_COUNTRY_BY_NAME, FILTER_BY_ALF, ORDER_BY_AREA, GET_ALL_ACTIVITIES, GET_COUNTRY_BY_ID} from "../actions/constants";
+import { GET_COUNTRIES,FILTER_BY_CONTINENT,GET_COUNTRY_BY_NAME, FILTER_BY_ALF, ORDER_BY_AREA, GET_ALL_ACTIVITIES, GET_COUNTRY_BY_ID, FILTER_ACTIVITY} from "../actions/constants";
 
 const initialState = {
     countriesUpload : [],
@@ -92,6 +92,16 @@ function rootReducer (state = initialState, action){
                     return{
                         ...state,
                         allActivities : action.payload
+                    }
+                case "POST_ACTIVITY":
+                    return{
+                        ...state
+                    }
+                case FILTER_ACTIVITY :
+                    const countryActivity= state.allActivities.filter(a=>a.name===action.payload)[0].countries.map(countryWithActivity => countryWithActivity)
+                    return {
+                         ...state,
+                     showAllCountries: countryActivity
                     }
                  
 

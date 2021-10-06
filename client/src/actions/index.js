@@ -1,4 +1,4 @@
-import { GET_COUNTRIES, FILTER_BY_CONTINENT,FILTER_BY_ALF ,GET_COUNTRY_BY_NAME,ORDER_BY_AREA,GET_ALL_ACTIVITIES, GET_COUNTRY_BY_ID} from "./constants"
+import { GET_COUNTRIES, FILTER_BY_CONTINENT,FILTER_BY_ALF ,GET_COUNTRY_BY_NAME,ORDER_BY_AREA,GET_ALL_ACTIVITIES, GET_COUNTRY_BY_ID,FILTER_ACTIVITY} from "./constants"
 import axios from "axios"
 
 export function getAllCountries(){
@@ -63,10 +63,16 @@ export function getActivities(){
         });
     }
 }
-// export function postActivities(payload){
-//     return async function(dispatch){
-//         var post = await axios.post("http://localhost:3001/activity", payload)
-//         return post;
-//     }
-// }
+export function postActivities(payload){
+    return async function(dispatch){
+        var post = await axios.post("http://localhost:3001/activity", payload)
+        return post;
+    }
+}
+export function filterActivity(payload){
+    return{
+        type: FILTER_ACTIVITY,
+        payload
+    }
+}
 

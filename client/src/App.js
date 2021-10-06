@@ -4,6 +4,7 @@ import {Route, Switch} from "react-router-dom";
 import LandingPage from "./components/LandingPage"
 import Home from './components/Home';
 import Detail from './components/CountryDetail';
+import CreateActivity from './components/CreateActivity';
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <Route exact path ="/" component={LandingPage}/>
       <Route exact path = "/home" component={Home}/>
       <Route exact path ="/countries/:id" component={Detail}/>
+      <Route exact path="/postActivity" component={CreateActivity}/>
       </Switch>
     </div>
     </BrowserRouter>
