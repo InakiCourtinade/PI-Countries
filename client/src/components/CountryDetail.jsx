@@ -50,7 +50,7 @@ export default function Detail(){
 
 
                     )
-                }): <p>No hay actividades</p>
+                }): <p>No activities</p>
         }
         </div>
         </div>

@@ -18,9 +18,9 @@ const [order, setOrder] = useState("asc")
 const [area, setArea] =useState("max")
 const [currentPage, setCurrentPage] = useState(1); //indica el numero de pagina
 const [countriesPerPage, setCountriesPerPage] = useState(9); //indica el numero de paises que muestro por pagina
-const indexOfLastCountry = currentPage * countriesPerPage //sirve para 
-const indexOfFirstCountry = indexOfLastCountry - countriesPerPage
-const currentCountries = countriesLoaded.slice(indexOfFirstCountry, indexOfLastCountry)
+const indexOfLastCountry = currentPage * countriesPerPage //Hasta q pais mostrar 
+const indexOfFirstCountry = indexOfLastCountry - countriesPerPage // desde que pais mostrar
+const currentCountries = countriesLoaded.slice(indexOfFirstCountry, indexOfLastCountry) //paises q se muestran en la pagina
 
 const paginado = (pageNumber)=>{
     setCurrentPage(pageNumber)
@@ -28,25 +28,25 @@ const paginado = (pageNumber)=>{
 const activities = useSelector((state)=> state.allActivities)
 
 useEffect(()=>{
-    dispatch(getAllCountries());
+    dispatch(getAllCountries()); //Me traigo mis paises y actividades cuando se monta mi componente
     dispatch(getActivities())
 },[])
 
 function handleFilterActivity(e){
-    dispatch(filterActivity(e.target.value))
+    dispatch(filterActivity(e.target.value)) // dispacth de mi accion que filtra por actividad
 }
 
 function handleOnfilterByContinent(e){
-    dispatch(filterByContinent(e.target.value))
+    dispatch(filterByContinent(e.target.value)) //dipatch de mi accion que filtra por continente
  }
 
  function handleSumbitSearchName(e){
     e.preventDefault(e);
-    dispatch(getCountriesByName(search))
-    setSearch("")
+    dispatch(getCountriesByName(search)) // dispatch me mi accion que filtra por name
+    setSearch("")                        //Seteo mi estado vacio de nuevo
  }
 
- function handleOnInputSearchName(e){
+ function handleOnInputSearchName(e){   //Seteo mi estado search
      setSearch(e.target.value)
  }
 
