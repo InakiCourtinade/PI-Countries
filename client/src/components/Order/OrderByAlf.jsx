@@ -1,6 +1,7 @@
 import React from "react";
 import { filterByAlf } from "../../actions";
 import { useDispatch } from "react-redux";
+import styles from "./OrderByAlf.module.css"
 
 export default function Order({order,setOrder, setCurrentPage}){
 
@@ -17,7 +18,7 @@ export default function Order({order,setOrder, setCurrentPage}){
     }
     return(
         <div>
-            <button onClick={e=> handleOnClickAlf(e)}>Sort by Name</button>
+            <button className={styles.btn} onClick={e=> handleOnClickAlf(e)}>Sort by Name</button>
         </div>
     )
 

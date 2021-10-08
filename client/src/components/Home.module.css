@@ -8,3 +8,50 @@
     text-decoration: none;
   
 }
+.sectionFilters{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-content: space-evenly;
+    padding: 50px;
+}
+.input{
+    background: transparent;
+    margin-right: 10px;
+    border:solid white;
+    border-radius: 5px  ;
+    background-color: transparent;
+    color: white;
+    padding: 10px;
+    -webkit-box-shadow: 6px 7px 13px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 6px 7px 13px -1px rgba(0,0,0,0.75);
+    box-shadow: 6px 7px 13px -1px rgba(0,0,0,0.75);
+}
+
+.btn{
+    border:solid white;
+    border-radius: 5px  ;
+    background-color: transparent;
+    color: white;
+    padding: 10px;
+    -webkit-box-shadow: 6px 7px 13px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 6px 7px 13px -1px rgba(0,0,0,0.75);
+    box-shadow: 6px 7px 13px -1px rgba(0,0,0,0.75);
+}
+.btn:hover{
+    transform: scale(1.08);
+    transition: all 0.5s;
+    cursor: pointer;
+    color: #fff;
+    
+}
+.opciones{
+    background-color: transparent;
+    color: black;
+}
+.title{
+    font-size: 32px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: white;
+}
+

@@ -15,8 +15,11 @@
     margin-top: 20px;
 }
 .btn:hover{
+    transform: scale(1.08);
+    transition: all 0.5s;
+    
     cursor: pointer;
-    background-color: red;
+    color: #fff;
 }
 .section2{
     display: flex;
@@ -31,7 +34,10 @@
     padding-left: 50px;
     padding-right: 50px;
     margin-bottom: 200px;
-
+    background-color: rgba(3, 3, 3, 0.719);
+    -webkit-box-shadow: 6px 7px 13px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 6px 7px 13px -1px rgba(0,0,0,0.75);
+    box-shadow: 6px 7px 13px -1px rgba(0,0,0,0.75);
 }
 .activity{
     border: solid white;
@@ -40,6 +46,10 @@
     color: white;
     padding-left: 50px;
     padding-right: 50px;
+    background-color: rgba(3, 3, 3, 0.719);
+    -webkit-box-shadow: 6px 7px 13px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 6px 7px 13px -1px rgba(0,0,0,0.75);
+    box-shadow: 6px 7px 13px -1px rgba(0,0,0,0.75);
     
 }
 

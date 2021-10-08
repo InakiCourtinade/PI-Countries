@@ -20,12 +20,16 @@
 
 }
 .btn1:hover{
+    transform: scale(1.08);
+    transition: all 0.5s;
     cursor: pointer;
-    background-color: red;
+    color: #fff;
 }
 .warning{
     color: red;
     font-size: x-small;
+    display: flex;
+    justify-content: center;
 }
 .label{
     margin-right: 10px;
@@ -50,7 +54,9 @@
     margin-top: 70px;
 }
 .btn2:hover{
+    transform: scale(1.08);
+    transition: all 0.5s;
     cursor: pointer;
-    background-color: red;
+    color: #fff;
 }
 

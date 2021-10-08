@@ -15,9 +15,12 @@
     width: 1.5rem;
     border: 1px solid white;
     margin-bottom: 2rem;
+    
 }
 .container:hover{
-    background-color: red;
+    transform: scale(1.08);
+    transition: all 0.5s;
+    background-color: rgba(3, 3, 3, 0.719);
     cursor: pointer;
     color: #fff;
 }

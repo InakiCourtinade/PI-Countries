@@ -62,28 +62,31 @@ function handdleOnClickCountries(e){ //Me traigo todos los paises
 
  return (
      <div>
-         <div>
-             <Link to="/postActivity">
-             <button>Create activity</button>
-             </Link>
-         </div>
+         
         {/* formulario para buscar por pais */}
         <div>
             <form onSubmit={(e) => { handleSumbitSearchName(e) }}>
-                <h2>Search your country...</h2>
-                <input  type="text" value={search} name="name" placeholder="Country..." onChange={(e) => { handleOnInputSearchName(e) }}/>
-                <button type="submit" onClick={e=>handleSumbitSearchName(e)}>Search</button>
+                <h2 className={styles.title}>Search your country...</h2>
+                <input type="text" value={search} name="name" placeholder="Country..." onChange={(e) => { handleOnInputSearchName(e) }} className={styles.input}/>
+                <button className={styles.btn} type="submit" onClick={e=>handleSumbitSearchName(e)}>Search</button>
             </form>
         </div>
+        
+        <div className={styles.sectionFilters}>
+        <div>
+             <Link to="/postActivity">
+             <button className={styles.btn}>Create activity</button>
+             </Link>
+         </div>
 
         <div>
-            <label>Filter by Activity</label>
-            <select onChange={(e)=>{handleFilterActivity(e)}}>
-                <option>Activity</option>
+            
+            <select className={styles.btn} onChange={(e)=>{handleFilterActivity(e)}}>
+                <option className={styles.opciones}>Select activity</option>
                 {activities?.length &&
                     activities.map(el=>{
                         return(
-                            <option key={el.id} value={el.name}>{el.name}</option>
+                            <option className={styles.opciones} key={el.id} value={el.name}>{el.name}</option>
                         )
                     })
                 }
@@ -91,7 +94,7 @@ function handdleOnClickCountries(e){ //Me traigo todos los paises
         </div>
 
         <div>
-            <button type= "submit" onClick ={(e)=>{handdleOnClickCountries(e)}}>Show all countries</button>
+            <button className={styles.btn} type= "submit" onClick ={(e)=>{handdleOnClickCountries(e)}}>Show all countries</button>
         </div>
          <div>
              <Order order={order} setOrder={setOrder} setCurrentPage={setCurrentPage}/>
@@ -100,15 +103,16 @@ function handdleOnClickCountries(e){ //Me traigo todos los paises
              <OrderByArea area={area} setArea={setArea}/>
          </div>
         <div>
-            <select onChange={e=>handleOnfilterByContinent(e)}>
-                <option value="All">All</option>
-                <option value="Africa">Africa</option>
-                <option value ="Antarctic">Antartica</option>
-                <option value="Americas">Americas</option>
-                <option value="Asia">Asia</option>
-                <option value="Europe">Europa</option>
-                <option value="Oceania">Oceania</option>
+            <select className={styles.btn} onChange={e=>handleOnfilterByContinent(e)}>
+                <option className={styles.opciones} value="All">All</option>
+                <option className={styles.opciones} value="Africa">Africa</option>
+                <option className={styles.opciones} value ="Antarctic">Antartica</option>
+                <option className={styles.opciones} value="Americas">Americas</option>
+                <option className={styles.opciones} value="Asia">Asia</option>
+                <option className={styles.opciones} value="Europe">Europa</option>
+                <option className={styles.opciones} value="Oceania">Oceania</option>
             </select>
+        </div>
         </div>
         <Paginado
         countriesPerPage = {countriesPerPage}
