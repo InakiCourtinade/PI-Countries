@@ -7,6 +7,7 @@ import Country from "./Country/Country"
 import Paginado from "./Paginado.jsx";
 import Order from "./Order/OrderByAlf.jsx";
 import OrderByArea from "./Order/OrderByArea.jsx";
+import styles from "./Home.module.css"
 
 
 export default function Home(){
@@ -114,17 +115,17 @@ function handdleOnClickCountries(e){ //Me traigo todos los paises
         countriesLoaded = {countriesLoaded.length}
         paginado = {paginado}
         />
-    {
+        <div className={styles.sectionCountries}>
+            {
                 currentCountries?.map(el =>{
             return (
-                <div>
-                    <Link to ={`/countries/${el.id}`}>
-                    <Country name={el.name} image={el.image} continent={el.continent} key={el.id}/>
+                    <Link to ={`/countries/${el.id}`} className={styles.link}>
+                    <Country  name={el.name} image={el.image} continent={el.continent} key={el.id}/>
                     </Link>
-                </div>
             );
         }) 
-    }
+             }
+    </div>
 
      </div>
  )

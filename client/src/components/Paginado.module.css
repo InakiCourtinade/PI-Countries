@@ -1,0 +1,23 @@
+.ul{
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    color: white;
+    
+}
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    height: 1.5rem;
+    width: 1.5rem;
+    border: 1px solid white;
+    margin-bottom: 2rem;
+}
+.container:hover{
+    background-color: red;
+    cursor: pointer;
+    color: #fff;
+}

@@ -1,0 +1,30 @@
+.myCountry{
+    color: white;
+    height: 350px;
+    max-width: 450px;
+    -webkit-box-shadow: 6px 7px 13px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 6px 7px 13px -1px rgba(0,0,0,0.75);
+    box-shadow: 6px 7px 13px -1px rgba(0,0,0,0.75);
+}
+.flag{
+    
+
+    margin-bottom: 20px;
+}
+.country{
+    font-size: 32px;
+    font-family:sans-serif;
+    padding-top: 30px;
+}
+.container{
+    max-height: 100px;
+}
+.titulo3{
+    font-weight: normal;
+    font-size: 24px;
+}
+.myCountry:hover{
+    transform: scale(1.08);
+    transition: all 0.5s;
+    background-color: rgba(3, 3, 3, 0.719);
+}

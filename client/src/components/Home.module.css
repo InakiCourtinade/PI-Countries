@@ -1,0 +1,10 @@
+.sectionCountries{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 30% 30% 30%;
+    gap: 20px;
+}
+.link{
+    text-decoration: none;
+  
+}

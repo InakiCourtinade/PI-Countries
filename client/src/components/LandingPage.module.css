@@ -1,0 +1,41 @@
+.buttonLP{
+  font-size: 30px;
+  background-color: transparent;
+  padding-left: 50px;
+  padding-right: 50px;
+  font-style: italic;
+  margin-top: 50px;
+  color: white;
+  border: 3px solid #ffffff;
+  border-radius: 10px;  
+  
+
+}
+.buttonLP:hover{
+    cursor: pointer;
+    background-color: red;
+}
+.title{
+    border: solid;
+    border-radius: 10px;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-bottom: 50px;
+    font-size: larger;
+    font-style: oblique;
+    font-family: cursive;
+    
+}
+
+.all{
+    
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    margin-top: 130px;
+}
+.title2{
+    padding-top: 30px;
+    padding-bottom: 30px;
+}

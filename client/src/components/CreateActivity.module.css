@@ -1,0 +1,56 @@
+.all{
+    display: flex;
+    flex-direction: column;
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-bottom: 300px;
+    padding-top: 30px;
+    
+}
+.btn1{
+    border: solid white;
+    border-radius: 5px;
+    padding: 10px;
+    background: transparent;
+    display: flex;
+    justify-self: left;
+    color: white;
+    margin-top: 20px;
+    
+
+}
+.btn1:hover{
+    cursor: pointer;
+    background-color: red;
+}
+.warning{
+    color: red;
+    font-size: x-small;
+}
+.label{
+    margin-right: 10px;
+    color: black;
+}
+.inputShape{
+    background-color: transparent;
+    border: solid white;
+    padding: 10px;
+    border-radius: 10px;
+    color: black;
+}
+.separador{
+    margin-top: 10px;
+}
+.btn2{
+    border: solid white;
+    border-radius: 5px;
+    padding: 10px;
+    background: transparent;
+    color: white;
+    margin-top: 70px;
+}
+.btn2:hover{
+    cursor: pointer;
+    background-color: red;
+}
+

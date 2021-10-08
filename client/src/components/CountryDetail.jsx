@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { getCountriesById } from "../actions";
+import styles from "./CountryDetail.module.css"
 
 export default function Detail(){
     const {id} = useParams()
@@ -14,14 +15,15 @@ export default function Detail(){
     
 
     return(
-        <div>
+        <div className={styles.section1}>
             <div>
                 <Link to="/home">
-                <button>return home</button>
+                <button className={styles.btn}>return home</button>
                 </Link>
             </div>
+            <div className={styles.section2}>
             { getDetail.length > 0 ?
-            <div>
+            <div className={styles.country}>
                 <h3>{getDetail[0].name}</h3>
                 <img src={getDetail[0].image} alt="Image not found" />
                 <p>ID: {getDetail[0].id}</p>
@@ -35,13 +37,13 @@ export default function Detail(){
             :<p>Loading...</p>
         }
 
-        <div>
+        <div className={styles.activity}>
             <h1>Activities:</h1>
 
             {getDetail[0]?.activities?.length?
                 getDetail[0]?.activities.map(a=>{
                     return(
-                        <div>
+                        <div className={styles.activity2}>
                             <p>Name:  {a.name}</p>
                             <p>Difficulty:  {a.difficulty}</p>
                             <p>Season: {a.season}</p>
@@ -52,6 +54,7 @@ export default function Detail(){
                     )
                 }): <p>No activities</p>
         }
+        </div>
         </div>
         </div>
     )

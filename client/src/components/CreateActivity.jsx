@@ -4,24 +4,25 @@ import { useEffect, useState } from "react";
 import { useDispatch,useSelector } from "react-redux";
 import {  getAllCountries, postActivities}  from "../actions";
 import {Link} from "react-router-dom"
+import styles from "./CreateActivity.module.css"
 
 
 function validate(activityPost){
     let errors={}
     if(!activityPost.name){
-        errors.name= "requires a name";
+        errors.name= "*requires a name";
     }
     if(activityPost.difficulty < 1 || activityPost.difficulty > 5 ){
-        errors.difficulty ="select difficulty between 1-5"
+        errors.difficulty ="*select difficulty between 1-5"
     }
     if(!activityPost.duration){
-        errors.duration= "requires duration"
+        errors.duration= "*requires duration"
     }
     if(!activityPost.season.length){
-        errors.season= "select season";        
+        errors.season= "*select season";        
     }
     if(!activityPost.countryId.length){
-        errors.countryId= "select country"
+        errors.countryId= "*select country"
     }
     return errors;
 }
@@ -78,18 +79,18 @@ export default function CreateActivity() {
 
     
     return(
-        <div>
-            <h1>Create Activity</h1>
-            <div>
+        <div className={styles.all}>
+            <div className={styles.posBTN}>
                 <Link to="/home">
-                    <button>Back Home</button>
+                    <button className={styles.btn1}>Back Home</button>
                 </Link>
             </div>
+            <h1>Create Activity</h1>
             <div>
-                <form onSubmit={(e)=>{handleSumbit(e)}}>
-                    <div>
-                    <label>Select your Country</label>
-                    <select  name ="countryId" onChange={(e)=>{handleSelect(e)}}>
+                <form classname={styles.form} onSubmit={(e)=>{handleSumbit(e)}}>
+                    <div className={styles.separador}>
+                    <label className={styles.label}>Select your Country</label>
+                    <select className={styles.inputShape} name ="countryId" onChange={(e)=>{handleSelect(e)}}>
                         <option>Countries</option>
                         {
                             countries.map(count=>(<option key={count.id} value={count.id}>{count.name}</option>))
@@ -97,47 +98,47 @@ export default function CreateActivity() {
                     </select>
                     {
                         errors.countryId && (
-                            <p>{errors.countryId}</p>
+                            <p className={styles.warning}>{errors.countryId}</p>
                         )
                     }
                     </div>
 
-                    <div>
-                    <label>Activity Name:</label>
-                    <input type="text" value={activityPost.name} name="name" placeholder="Name..."
+                    <div className={styles.separador}>
+                    <label className={styles.label}>Activity Name:</label>
+                    <input className={styles.inputShape} type="text" value={activityPost.name} name="name" placeholder="Name..."
                      onChange={(e)=>{handleChange(e)}} />
                     {
                         errors.name && (
-                            <p>{errors.name}</p>
+                            <p className={styles.warning}>{errors.name}</p>
                             )
                     }
                     </div>
 
-                    <div>   
-                    <label>Difficulty</label>
-                    <input type="number" value={activityPost.difficulty} name="difficulty" placeholder="From 1 to 5"
+                    <div className={styles.separador}>   
+                    <label className={styles.label}>Difficulty</label>
+                    <input className={styles.inputShape} type="number" value={activityPost.difficulty} name="difficulty" placeholder="From 1 to 5"
                      onChange={(e)=>{handleChange(e)}} />
                     {
                         errors.difficulty && (
-                            <p>{errors.difficulty}</p>
+                            <p className={styles.warning}>{errors.difficulty}</p>
                         )
                     }
                     </div>
 
-                    <div>   
-                    <label>Duration (hours)</label>
-                    <input type="text" value={activityPost.duration} name="duration" placeholder="Duration..." 
+                    <div className={styles.separador}>   
+                    <label className={styles.label}>Duration (hours)</label>
+                    <input className={styles.inputShape} type="text" value={activityPost.duration} name="duration" placeholder="Duration..." 
                     onChange={(e)=>{handleChange(e)}} />
                     {
                         errors.duration && (
-                            <p>{errors.duration}</p>
+                            <p className={styles.warning}>{errors.duration}</p>
                         )
                     }
                     </div>
 
-                    <div>
-                    <label>Season</label>
-                    <select name="season" value={activityPost.season} onChange={(e)=>{handleChange(e)}} >
+                    <div className={styles.separador}>
+                    <label className={styles.label}>Season</label>
+                    <select className={styles.inputShape} name="season" value={activityPost.season} onChange={(e)=>{handleChange(e)}} >
                         <option value="Season">Season</option>
                         <option value="Verano">Summer</option>
                         <option value="Invierno">Winter</option>
@@ -146,12 +147,12 @@ export default function CreateActivity() {
                     </select>
                     {
                         errors.season && (
-                            <p>{errors.season}</p>
+                            <p className={styles.warning}>{errors.season}</p>
                         )
                     }
                     </div>
                     
-                    <button type="submit">Create!</button>
+                    <button className={styles.btn2} type="submit">Create!</button>
                 </form>
                 
             </div>
