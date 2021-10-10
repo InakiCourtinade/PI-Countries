@@ -38,7 +38,7 @@ router.get("/", async (req, res) => {
         const activities = await Activity.findAll({
             include: Country
         });
-        return res.json(activities)
+        return res.status(200).json(activities)
     } catch (err) {
         console.log(error);
     }

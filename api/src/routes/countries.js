@@ -48,7 +48,7 @@ router.get("/", async(req,res)=>{
         }else{
             let restcountries = await Country.findAll() // si no pasa nada por query muestro los paises
             if(restcountries){
-                return res.json(restcountries)
+                return res.status(200).json(restcountries)
             } else{
                 return res.send("Pais no encontrado")
             }

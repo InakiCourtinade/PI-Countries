@@ -1,4 +1,4 @@
-const { Country, conn } = require('../../src/db.js');
+const { Country,  conn } = require('../../src/db.js');
 const { expect } = require('chai');
 
 describe('Country model', () => {
@@ -6,17 +6,24 @@ describe('Country model', () => {
     .catch((err) => {
       console.error('Unable to connect to the database:', err);
     }));
-  describe('Validators', () => {
-    beforeEach(() => Country.sync({ force: true }));
-    describe('name', () => {
-      it('should throw an error if name is null', (done) => {
-        Country.create({})
-          .then(() => done(new Error('It requires a valid name')))
-          .catch(() => done());
+
+    describe('Country model', async ()=> {
+      
+      it('should contain attributes: id, name, image, region, subregion, capital and area', 
+      async () => {
+        const country = await Country.findOne({where:{id: 'ARG'}});
+        expect(country.dataValues).to.have.own.property('id');
+        expect(country.dataValues).to.have.own.property('name');
+        expect(country.dataValues).to.have.own.property('image');
+        expect(country.dataValues).to.have.own.property('continent');
+        expect(country.dataValues).to.have.own.property('subregion');
+        expect(country.dataValues).to.have.own.property('capital');
+        expect(country.dataValues).to.have.own.property('area');
       });
-      it('should work when its a valid name', () => {
-        Country.create({ name: 'Argentina' });
-      });
-    });
-  });
+     
+      it('attribute name must be a string', async () => {
+        const country = await Country.findOne({where:{id: 'ARG'}});
+        expect(country.dataValues.name).to.be.a('string')
+      })
+    })
 });
