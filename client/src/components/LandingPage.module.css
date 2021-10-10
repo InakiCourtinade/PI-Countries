@@ -12,8 +12,10 @@
 
 }
 .buttonLP:hover{
+    transform: scale(1.08);
+    transition: all 0.5s;
     cursor: pointer;
-    background-color: red;
+    color: #fff
 }
 .title{
     border: solid;

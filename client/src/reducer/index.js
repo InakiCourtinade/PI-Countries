@@ -98,7 +98,8 @@ function rootReducer (state = initialState, action){
                         ...state
                     }
                 case FILTER_ACTIVITY :
-                    const countryActivity= state.allActivities.filter(a=>a.name===action.payload)[0].countries.map(countryWithActivity => countryWithActivity)
+                    const paises = state.countriesUpload
+                    const countryActivity= action.payload === "Select Activity"?paises:state.allActivities.filter(a=>a.name===action.payload)[0].countries.map(countryWithActivity => countryWithActivity)
                     return {
                          ...state,
                      showAllCountries: countryActivity

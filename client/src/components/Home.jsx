@@ -82,7 +82,7 @@ function handdleOnClickCountries(e){ //Me traigo todos los paises
         <div>
             
             <select className={styles.btn} onChange={(e)=>{handleFilterActivity(e)}}>
-                <option className={styles.opciones}>Select activity</option>
+                <option value="Select Activity" className={styles.opciones}>Select activity</option>
                 {activities?.length &&
                     activities.map(el=>{
                         return(

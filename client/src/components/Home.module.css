@@ -27,6 +27,9 @@
     -moz-box-shadow: 6px 7px 13px -1px rgba(0,0,0,0.75);
     box-shadow: 6px 7px 13px -1px rgba(0,0,0,0.75);
 }
+.input::placeholder{
+    color: white;
+}
 
 .btn{
     border:solid white;

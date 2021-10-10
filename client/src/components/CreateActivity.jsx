@@ -54,16 +54,20 @@ export default function CreateActivity() {
         })
     }
     function handleSumbit(e){
+        if(Object.keys(errors).length ===0){
         e.preventDefault()
         dispatch(postActivities(activityPost))
+        alert("Activity created")
         setActivityPost({
         name: "",
         difficulty: "",
         duration: "",
         season: "",
         countryId: []
-    })
-        
+    })}else{
+        e.preventDefault()
+        alert("Complete all please!")
+    }
     }
     function handleChange(e){
         setActivityPost({
@@ -85,15 +89,16 @@ export default function CreateActivity() {
                     <button className={styles.btn1}>Back Home</button>
                 </Link>
             </div>
-            <h1>Create Activity</h1>
-            <div>
+            <div className={styles.create}>
+            <h1 className={styles.title}>Create Activity</h1>
                 <form classname={styles.form} onSubmit={(e)=>{handleSumbit(e)}}>
+                    
                     <div className={styles.separador}>
                     <label className={styles.label}>Select your Country</label>
                     <select className={styles.inputShape} name ="countryId" onChange={(e)=>{handleSelect(e)}}>
-                        <option>Countries</option>
+                        <option className={styles.option} >Countries</option>
                         {
-                            countries.map(count=>(<option key={count.id} value={count.id}>{count.name}</option>))
+                            countries.map(count=>(<option className={styles.option} key={count.id} value={count.id}>{count.name}</option>))
                         }
                     </select>
                     {
@@ -139,11 +144,11 @@ export default function CreateActivity() {
                     <div className={styles.separador}>
                     <label className={styles.label}>Season</label>
                     <select className={styles.inputShape} name="season" value={activityPost.season} onChange={(e)=>{handleChange(e)}} >
-                        <option value="Season">Season</option>
-                        <option value="Verano">Summer</option>
-                        <option value="Invierno">Winter</option>
-                        <option value="Otoño">Autumn</option>
-                        <option value="Primavera">Spring</option>
+                        <option className={styles.option} value="Season">Season</option>
+                        <option className={styles.option} value="Verano">Summer</option>
+                        <option className={styles.option} value="Invierno">Winter</option>
+                        <option className={styles.option} value="Otoño">Autumn</option>
+                        <option className={styles.option} value="Primavera">Spring</option>
                     </select>
                     {
                         errors.season && (

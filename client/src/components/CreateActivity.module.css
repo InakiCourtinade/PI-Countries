@@ -16,6 +16,9 @@
     justify-self: left;
     color: white;
     margin-top: 20px;
+    -webkit-box-shadow: 6px 7px 13px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 6px 7px 13px -1px rgba(0,0,0,0.75);
+    box-shadow: 6px 7px 13px -1px rgba(0,0,0,0.75);
     
 
 }
@@ -33,14 +36,23 @@
 }
 .label{
     margin-right: 10px;
-    color: black;
+    color: white;
 }
 .inputShape{
     background-color: transparent;
     border: solid white;
     padding: 10px;
     border-radius: 10px;
-    color: black;
+    color: white;
+    max-width: 200px;
+    width: 200px;
+    -webkit-box-shadow: 6px 7px 13px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 6px 7px 13px -1px rgba(0,0,0,0.75);
+    box-shadow: 6px 7px 13px -1px rgba(0,0,0,0.75);
+}
+
+.inputShape::placeholder{
+    color: white;
 }
 .separador{
     margin-top: 10px;
@@ -52,6 +64,9 @@
     background: transparent;
     color: white;
     margin-top: 70px;
+    -webkit-box-shadow: 6px 7px 13px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 6px 7px 13px -1px rgba(0,0,0,0.75);
+    box-shadow: 6px 7px 13px -1px rgba(0,0,0,0.75);
 }
 .btn2:hover{
     transform: scale(1.08);
@@ -59,4 +74,17 @@
     cursor: pointer;
     color: #fff;
 }
-
+.option{
+    color: black;
+}
+.create{
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    
+}
+.title{
+    font-size: 32px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: white;
+}
